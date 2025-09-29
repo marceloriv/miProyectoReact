@@ -10,7 +10,9 @@ function App() {
       <Header />
       <main className="container-xl mt-5">
         <h2>Nuestra Coleccion</h2>
-        <Audifono audifono={data} />
+        {data.map((audifono) => (
+          <Audifono audifono={audifono} />
+        ))}
       </main>
     </>
   );
