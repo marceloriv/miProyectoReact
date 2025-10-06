@@ -13,7 +13,7 @@ export default function Header() {
         </div>
         <nav className="col-md-6 mt-5 d-flex align-items-center justify-content-center">
           <div className="carrito">
-            <img className="img-fluid" src="/public/img/carrito.png" alt="imagen de carrito" />
+            <img className="img-fluid" src="/public/img/carrito.svg" alt="imagen de carrito" />
             <div id="carrito" className="bg-white p-3">
               {
                 /* Aqui se renderizan los productos que se agregan al carrito */
@@ -31,8 +31,8 @@ export default function Header() {
                         </tr>
                       </thead>
                     </table>
-                    <tbody>
-                      {CaretPosition.map(audifono => (
+                    {CaretPosition.map(audifono => (
+                      <tbody>
                         <tr key={audifono.id}>
                           <td>
                             <img className="img-fluid" src={`/public/img/${audifono.imagen}.webp`} alt={audifono.nombre} />
@@ -42,11 +42,24 @@ export default function Header() {
                           <td className="flex align-items-center gap-4">
                             <button type="button" className="btn btn-dark">
                               onClick={() => increaseQuantity(audifono.id)}
-                            </button>
+                              + </button>
+                            {audifono.quantity}
+                            <button type="button" className="btn btn-dark">
+                              onClick={() => decreaseQuantity(audifono.id)}
+                              - </button>
+                            {audifono.quantity}
+                          </td>
+                          <td>
+                            <button className="btn btn-danger" type="button" onClick={() => removeFromCart(audifono.id)}>x</button>
                           </td>
                         </tr>
-                      ))}
-                    </tbody>
+                        <table>
+                          <p className="text-end">
+                            Total a pagar: <span className="fw-bold">{cartTotal}</span>
+                          </p>
+                        </table>
+                      </tbody>
+                    ))}
                   </>
                 )
               }
