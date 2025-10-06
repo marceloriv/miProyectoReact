@@ -10,9 +10,12 @@ function App() {
       <Header />
       <main className="container-xl mt-5">
         <h2>Nuestra Coleccion</h2>
-        {data.map((audifono) => (
-          <Audifono audifono={audifono} />
-        ))}
+        <div className="row mt-5">
+          {data.map((audifono) => (
+            <Audifono audifono={audifono} />
+          ))}
+        </div>
+
       </main>
 
       <footer className="bg-dark mt-2 p-5">
